@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Fasilitas</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#f8fafc,#eef2f7);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#1e293b;
+  overflow:hidden;
+}
+
+/* SPLASH */
+.loader{
+  position:fixed;
+  inset:0;
+  background:#ffffff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  transition:opacity .8s ease, visibility .8s ease;
+}
+
+.loader img{
+  width:190px;
+  animation:zoomReveal 2s cubic-bezier(.19,1,.22,1) forwards;
+}
+
+@keyframes zoomReveal{
+  0%{transform:scale(.5);filter:blur(15px);opacity:0;}
+  70%{transform:scale(1.08);filter:blur(0);opacity:1;}
+  100%{transform:scale(1);}
+}
+
+.loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+/* CONTAINER */
+.container{
+  width:100%;
+  max-width:430px;
+  background:#ffffff;
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+  opacity:0;
+  transform:translateY(20px);
+  transition:all .8s ease;
+}
+
+.container.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.logos{
+  display:flex;
+  justify-content:center;
+  margin-bottom:18px;
+}
+
+.logos img{
+  width:75%;
+  max-width:350px;
+}
+
+h1{
+  text-align:center;
+  font-weight:700;
+  margin:8px 0;
+  color:#0f172a;
+}
+
+p{
+  text-align:center;
+  font-size:14px;
+  color:#64748b;
+  margin-bottom:24px;
+}
+
+.menu{display:grid;gap:14px}
+
+.card{
+  background:#f8fafc;
+  padding:18px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  cursor:pointer;
+  transition:.25s;
+  border:1px solid #e2e8f0;
+}
+
+.card:hover{
+  background:#ffffff;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  transform:translateY(-3px);
+}
+
+.card:active{transform:scale(.98)}
+
+.icon-wrap{
+  width:46px;height:46px;
+  border-radius:12px;
+  background:#e0f2fe;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#0284c7;
+  flex-shrink:0;
+}
+
+.icon{width:24px;height:24px}
+
+.title{
+  font-weight:600;
+  font-size:15px;
+  color:#0f172a;
+  display:block;
+}
+
+.desc{
+  font-size:12px;
+  color:#64748b;
+  display:block;
+  margin-top:2px;
+}
+
+footer{
+  text-align:center;
+  margin-top:24px;
+  font-size:12px;
+  color:#94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SPLASH SCREEN -->
+<div class="loader" id="loader">
+  <img src="logo-perusahaan.png" alt="Logo">
+</div>
+
+<div class="container" id="container">
+
+<div class="logos">
+  <img src="logo-perusahaan.png" alt="Logo Perusahaan">
+</div>
+
+<h1>EXIT CLEARANCE</h1>
+<p>Silakan pilih</p>
+
+<div class="menu">
+
+  <!-- Penitip Dokumen -->
+  <div class="card" onclick="location.href='https://forms.gle/GNDkfDn73G5acr8KA'">
+    <div class="icon-wrap">
+      <!-- Icon dokumen -->
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 4h16v16H4z" />
+        <line x1="8" y1="8" x2="16" y2="8"/>
+        <line x1="8" y1="12" x2="16" y2="12"/>
+        <line x1="8" y1="16" x2="16" y2="16"/>
+      </svg>
+    </div>
+    <div>
+      <span class="title">Penitip Dokumen</span>
+      <span class="desc">Form Penitip Dokumen</span>
+    </div>
+  </div>
+
+  <!-- Log Dokumen (Tracking) -->
+  <div class="card" onclick="location.href='https://forms.gle/TYXHqGChEcNjabWD9'">
+    <div class="icon-wrap">
+      <!-- Icon clipboard checklist -->
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 2h6a2 2 0 0 1 2 2v2H7V4a2 2 0 0 1 2-2z"/>
+        <rect x="7" y="6" width="10" height="16" rx="2"/>
+        <line x1="9" y1="10" x2="15" y2="10"/>
+        <line x1="9" y1="14" x2="15" y2="14"/>
+        <line x1="9" y1="18" x2="15" y2="18"/>
+      </svg>
+    </div>
+    <div>
+      <span class="title">Log Dokumen</span>
+      <span class="desc">Tracking Dokumen yang Dititip</span>
+    </div>
+  </div>
+
+</div>
+
+<footer>© 2026 Sistem HJF/KPS/OST/CKM</footer>
+</div>
+
+<script>
+const loader = document.getElementById("loader");
+const container = document.getElementById("container");
+
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    loader.classList.add("hide");
+    container.classList.add("show");
+    document.body.style.overflow="auto";
+  },2000);
+});
+</script>
+
+</body>
+</html>
